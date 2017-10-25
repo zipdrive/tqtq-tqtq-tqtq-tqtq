@@ -2,7 +2,7 @@ var testGROUPME = "{\n\t\"message\": {\n\t\t\"source_guid\": \"11111111\",\n\t\t
 
 
 function parseMessages(t) {
-    document.write(t);
+    //document.write(t);
     
     //var data = JSON.parse(text);
     //var len = data.messages.length;
@@ -19,7 +19,7 @@ function httpGetAsync(url, callback) {
 }
 
 function testGroupmeCallback(t) {
-    document.write(t);
+    //document.write(t);
 }
 
 function httpPost(url, data, callback) {
