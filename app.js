@@ -1,45 +1,17 @@
-var testGROUPME = {
-    "message": {
-        "source_guid": "11111111",
-        "text": "01001000 01100101 01101100 01101100 01101111 00100001",
-        "attachments": []
-    },
-    "token": "441099a0998a0135f42d1be571d9ef1"
-};
+var http = require('http');
 
-
-function parseMessages(t) {
-    //document.write(t);
-    
-    //var data = JSON.parse(text);
-    //var len = data.messages.length;
+function testGroupmeCallback(res) {
+    document.write(res);
 }
 
-function httpGetAsync(url, callback) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", url, true); // true for asynchronous 
-    xmlHttp.send(null);
+function testGroupmeFunction(callback) {
+    const options = {
+        protocol: 'https:',
+        hostname: 'api.groupme.com/v3',
+        path: '/groups?token=441099a0998a0135f42d1be571d9ef1',
+        method: 'GET'
+    };
+    http.get('http://api.groupme.com/v3/groups?token=441099a0998a0135f42d1be571d9ef1', callback);
 }
 
-function testGroupmeCallback(t) {
-    //document.write(t);
-}
-
-function httpPost(url, data, callback) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("POST", url, true);
-    xmlHttp.send(data);
-}
-
-var hpost_base = "https://api.groupme.com/v3/groups/18268055/messages";
-var hget_base = hpost_base + "?token=441099a0998a0135f42d1be571d9ef13&limit=100&";
-
-httpPost(hpost_base, JSON.stringify(testGROUPME), testGroupmeCallback);
+testGroupmeFunction(testGroupmeCallback);
