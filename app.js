@@ -1,4 +1,11 @@
-var testGROUPME = "{\n\t\"message\": {\n\t\t\"source_guid\": \"11111111\",\n\t\t\"text\": \"01001000 01100101 01101100 01101100 01101111 00100001\",\n\t\t\"attachments\": []\n\t},\n\t\"token\": \"441099a0998a0135f42d1be571d9ef1\"\n}";
+var testGROUPME = {
+    "message": {
+        "source_guid": "11111111",
+        "text": "01001000 01100101 01101100 01101100 01101111 00100001",
+        "attachments": []
+    },
+    "token": "441099a0998a0135f42d1be571d9ef1"
+};
 
 
 function parseMessages(t) {
@@ -35,4 +42,4 @@ function httpPost(url, data, callback) {
 var hpost_base = "https://api.groupme.com/v3/groups/18268055/messages";
 var hget_base = hpost_base + "?token=441099a0998a0135f42d1be571d9ef13&limit=100&";
 
-httpPost(hpost_base, testGROUPME, testGroupmeCallback);
+httpPost(hpost_base, JSON.stringify(testGROUPME), testGroupmeCallback);
